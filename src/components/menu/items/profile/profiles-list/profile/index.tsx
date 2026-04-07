@@ -8,19 +8,21 @@ const Profile: FC<ProfileType> = ({ skinUrl, index, currentSelectedIndex, onSele
 
   return (
     <button
-      key={index} 
+      key={index}
       onClick={() => onSelect(index)}
-      className={classNames({ 
+      className={classNames({
         [css.profile]: true,
         [css.selected]: index === currentSelectedIndex,
         [css.errored]: errored
       })}
     >
       <>
-        <img 
+        <img
           src={skinUrl}
           onLoad={() => setErrored(false)}
           onError={() => setErrored(true)}
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
           alt=""
         ></img>
         <div className={css.errorMsg}>No skin</div>
